@@ -1,25 +1,25 @@
- function createAnalytics() {
-    let counter = 0;
-    let isDestroyed = false;
+function createAnalytics() {
+  let counter = 0;
+  let destroyed = false;
 
-    const listener = () => counter++
+  const listener = () => counter++;
 
-    document.addEventListener('click', listener)
+  document.addEventListener("click", listener);
 
-     return {
-        destroy() {
-          document.removeEventListener('click', listener)
-            isDestroyed = true;
-        },
+  return {
+    destroy() {
+      document.removeEventListener("click", listener);
+      destroyed = true;
+    },
 
-         getClicks() {
-            if (isDestroyed) {
-                return 'Analytics is destroyed'
-            }
-            return counter
-         }
-     }
- }
+    getClicks() {
+      if (destroyed) {
+        return "Analytics is destroyed. Total clicks = ${counter}";
+      }
+      return counter;
+    }
+  };
+}
 
- window.analytics = createAnalytics();
+window.analytics = createAnalytics();
 // Global variable Window in this case
