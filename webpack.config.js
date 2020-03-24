@@ -26,10 +26,29 @@ const optimization = () => {
   return config
 }
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
+const cssLoaders = extra => {
+ const loaders = [
+   {
+     loader: MiniCssExtractPlugin.loader,
+     options:{
+       hmr: isDev,
+       reloadAll: true
+     },
+   },
+   "css-loader"
+ ]
+
+  if (extra) {
+   loaders.push(extra)
+  }
+
+  return loaders
+}
 module.exports = {
   context: path.resolve(__dirname, "src"),
+
   mode: "development",
   entry: {
     main: "./index.js",
@@ -73,30 +92,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-            {
-          loader: MiniCssExtractPlugin.loader,
-          options:{
-            hmr: isDev,
-            reloadAll: true
-          },
-            },
-          "css-loader"
-        ]
+        use: cssLoaders()
       },
       {
         test: /\.less$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options:{
-              hmr: isDev,
-              reloadAll: true
-            },
-          },
-          "css-loader",
-            "less-loader"
-        ]
+        use: cssLoaders('less-loader')
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: cssLoaders('sass-loader')
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
