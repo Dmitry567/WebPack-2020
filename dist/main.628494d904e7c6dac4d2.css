@@ -1,0 +1,55 @@
+ @font-face {
+   font-family: 'Roboto';
+     src: url(11eabca2251325cfc5589c9c6fb57b46.ttf) format('truetype');
+ }
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.container {
+  padding-top: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.logo {
+  background-image: url(be9a2123c35969fd4e462acd507919bc.png);
+  background-size: cover;
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.code {
+  color: crimson;
+}
+
+
+
+.box {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  border: 1px solid #CCC;
+}
+.box h2 {
+  text-align: center;
+  color: darkblue;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  border: 1px solid #ccc; }
+  .card h2 {
+    text-align: center;
+    color: red; }
+
